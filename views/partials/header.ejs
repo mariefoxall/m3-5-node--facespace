@@ -7,5 +7,19 @@
 </head>
 <body>
   <header class="header">
-      <h1 class='site-title'>Facespace</h1>
+      <h1 class='site-title'><a href="http://localhost:8000">Facespace</a></h1>
+        <% if(currentUser.name === undefined){ %>
+          <!-- <button class="signin-button">
+          <a href="http://localhost:8000/signin">Sign in</a>
+          </button> -->
+
+          <form method="get" action="/signin">
+            <button class="signin-button" type="submit">Sign in</button>
+        </form>
+        <% } else { %>
+        <p><%- `Hello ${currentUser.name}!` %></p>
+        <% } %>
+        
+      
+      
   </header>

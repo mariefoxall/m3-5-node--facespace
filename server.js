@@ -16,17 +16,19 @@ const handleHomepage = (req, res) => {
   res.status(200);
   res.render("pages/homepage", {
     users: users,
+    currentUser: currentUser,
   });
 };
 
 const handleProfilePage = (req, res) => {
-  const currentUser = users.find((user) => {
+  const currentProfile = users.find((user) => {
     return user._id === req.params.id;
   });
-  if (currentUser !== undefined) {
+  if (currentProfile !== undefined) {
     res.status(200).render("pages/profile", {
       users: users,
-      user: currentUser,
+      user: currentProfile,
+      currentUser: currentUser,
     });
   } else {
     res.status(404).send("I couldn't find what you're looking for.");
@@ -34,17 +36,20 @@ const handleProfilePage = (req, res) => {
 };
 
 const handleSignin = (req, res) => {
-  res.status(200).render("pages/signin");
+  res.status(200).render("pages/signin", {
+    users: users,
+    currentUser: currentUser,
+  });
 };
 
 const handleName = (req, res) => {
   let firstName = req.body.firstName;
   console.log(firstName);
-  const userSignin = users.find((user) => {
+  currentUser = users.find((user) => {
     return user.name === firstName;
   });
-  if (userSignin !== undefined) {
-    res.status(200).redirect(`/users/${userSignin._id}`);
+  if (currentUser !== undefined) {
+    res.status(200).redirect(`/users/${currentUser._id}`);
   } else {
     res.status(404).redirect("/signin");
   }
