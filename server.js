@@ -20,7 +20,13 @@ const handleHomepage = (req, res) => {
 };
 
 const handleProfilePage = (req, res) => {
-  res.status(200).send(req.params.id);
+  const currentUser = users.find((user) => {
+    return user._id === req.params.id;
+  });
+  res.status(200).render("pages/profile", {
+    users: users,
+    user: currentUser,
+  });
 };
 
 // -----------------------------------------------------
