@@ -23,14 +23,31 @@ const handleProfilePage = (req, res) => {
   const currentUser = users.find((user) => {
     return user._id === req.params.id;
   });
-  res.status(200).render("pages/profile", {
-    users: users,
-    user: currentUser,
-  });
+  if (currentUser !== undefined) {
+    res.status(200).render("pages/profile", {
+      users: users,
+      user: currentUser,
+    });
+  } else {
+    res.status(404).send("I couldn't find what you're looking for.");
+  }
 };
 
 const handleSignin = (req, res) => {
   res.status(200).render("pages/signin");
+};
+
+const handleName = (req, res) => {
+  let firstName = req.body.firstName;
+  console.log(firstName);
+  const userSignin = users.find((user) => {
+    return user.name === firstName;
+  });
+  if (userSignin !== undefined) {
+    res.status(200).redirect(`/users/${userSignin._id}`);
+  } else {
+    res.status(404).redirect("/signin");
+  }
 };
 
 // -----------------------------------------------------
@@ -48,6 +65,8 @@ express()
   .get("/users/:id", handleProfilePage)
 
   .get("/signin", handleSignin)
+
+  .post("/getname", handleName)
 
   // a catchall endpoint that will send the 404 message.
   .get("*", handleFourOhFour)
