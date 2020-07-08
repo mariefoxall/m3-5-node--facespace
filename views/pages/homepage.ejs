@@ -6,7 +6,19 @@
     <ul class="homepage__all">
         <% users.forEach(user => { %>
         <li class="homepage__all--user">
-          <img src="<%= user.avatarUrl %>" />
+          
+          <img class="homepage-image" src="<%= user.avatarUrl %>" >
+      
+        <a href=<%- `/users/${user._id}` %>>
+          <div class="overlay">
+            <div class="userNameText">
+              <%- user.name %>
+              <!-- <form method="get" action=<%- `/users/${user._id}` %>>
+                <button class="signin-button" type="submit"><%- user.name %></button>
+            </form> -->
+          </div>
+        </div>
+      </a>
         </li>
         <% }) %>
       </ul>
