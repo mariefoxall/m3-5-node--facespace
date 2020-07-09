@@ -12,7 +12,7 @@
   position: relative;
   overflow: hidden;
 }
-.homepage__all--user img {
+.homepage__all--user .homepage-image {
   border: 1px solid var(--primary-color);
   width: 120px;
   transition: all ease 400ms;
@@ -21,22 +21,32 @@
   border: 5px solid var(--primary-color);
 } */
 .ribbon {
-  background: var(--primary-color);
+  /* background: var(--primary-color); */
   position: absolute;
   text-align: center;
-  transform: rotate(45deg);
-  right: -30px;
-  top: 10px;
+  font-family: Teko;
+  color: white;
+
+  /* transform: rotate(45deg); */
+  right: -25px;
+  top: -10px;
   width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 3px 0;
 }
-.ribbon span {
-  color: #fff;
+
+.speechbubble {
+  position: relative;
+}
+.friendspan {
+  color: black;
   font-family: Teko;
   font-size: 11px;
+  position: absolute;
+  right: 38px;
+  top: 20px;
 }
 
 .overlay {
