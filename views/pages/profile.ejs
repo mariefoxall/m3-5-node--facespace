@@ -4,8 +4,32 @@
     </div>
         <div class="profile-page__user">
         <img class="profile-page__user--avatar" src="<%= user.avatarUrl %>" />
-  
+  <div>
     <h2><%- user.name %></h2>
+    
+    <% if(currentUser.friends && currentUser.friends.includes(user._id)){ %>
+      <form method="post" action="/removefriend">
+        <button class="friend-button" type="submit" name= "removeID" value= <%= user._id %> >Remove friend </button>
+        </form>
+        <% } else if(currentUser.pendingfriends && currentUser.pendingfriends.includes(user._id)){ %>
+          <form method="post" action="/acceptfriend">
+            <button class="friend-button" type="submit" name= "acceptfriendID" value= <%= user._id %> >Accept friend request</button>
+            </form>
+        <% } else if(user.pendingfriends && user.pendingfriends.includes(currentUser._id)){ %>
+          <button class="friend-button" type="submit" name= "acceptfriendID" value= <%= user._id %> >Friend request pending</button>
+  
+    <% } else if(currentUser.friends && !currentUser.friends.includes(user._id) && currentUser._id !== user._id){ %>
+      <form method="post" action="/addfriend">
+        <button class="friend-button" type="submit" name= "addID" value= <%= user._id %> >Add friend </button>
+        </form>
+    
+    <% } else if(currentUser._id === user._id){ %>
+      <form method="post" action="/signout">
+        <button class="friend-button" type="submit" name= "signout" value= <%= user._id %> >Sign out of Facespace</button>
+        </form>
+    <% } %>
+
+  </div>
 
 </div>
 
@@ -17,7 +41,7 @@
                 <% const currentFriend = users.find((user) => { %>
                 <% return user._id === friendID; %>
                 <% }); %>
-                    <img src="<%= currentFriend.avatarUrl %>" />
+                    <a href=<%- `/users/${currentFriend._id}` %> ><img src="<%= currentFriend.avatarUrl %>" /></a>
             </li>
             <% }) %>
     </ul>

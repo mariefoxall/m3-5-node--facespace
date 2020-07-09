@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #cc5500;
-  --accent-bg-color: rgba(204, 85, 0, 0.1);
+  --primary-color: rgba(190, 126, 226, 0.9);
+  --accent-bg-color: rgba(159, 219, 125, 0.1);
   --page-horizontal-padding: 20px;
   --header-height: 50px;
   --max-content-width: 1200px;

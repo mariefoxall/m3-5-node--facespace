@@ -13,7 +13,8 @@
             <button class="signin-button" type="submit">Sign in</button>
         </form>
         <% } else { %>
-        <p><%- `Hello ${currentUser.name}!` %></p>
+        <a href=<%- `/users/${currentUser._id}` %>>
+          <p><%- `Hello ${currentUser.name}!` %></p></a>
         <% } %>
         
       

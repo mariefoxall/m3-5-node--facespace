@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<div class="signin-page">
+  <form method="post" action="/usersignup" class="signin-page__form">
+    <label for="newUserFirstName" class="signin-page__form--label">First name</label>
+    <input
+      type="text"
+      name="newUserFirstName"
+      placeholder="Your first name"
+      class="signin-page__form--input"
+    />
+    <label for="newUserImg" class="signin-page__form--label">New image</label>
+    <input
+      type="text"
+      name="newUserImg"
+      placeholder="Profile Image Url"
+      class="signin-page__form--input"
+    />
+    <button type="submit" class="signin-page__form--button">Submit</button>
+  </form>
+</div>
+<%- include('../partials/footer') %>

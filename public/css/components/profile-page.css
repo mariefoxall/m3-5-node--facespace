@@ -44,6 +44,27 @@
   width: calc(100% - 4px);
 }
 
+.friend-button {
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #fff;
+  height: 36px;
+  padding: 4px 12px;
+  font-size: 18px;
+  font-family: Teko;
+  margin-left: 15px;
+  margin-top: 15px;
+  text-decoration: none;
+  transition: all ease 400ms;
+}
+.friend-button:hover {
+  background: #fff;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
 @media screen and (min-width: 600px) {
   .profile-page__user {
     display: flex;
