@@ -36,10 +36,17 @@ const handleProfilePage = (req, res) => {
 };
 
 const handleSignin = (req, res) => {
-  res.status(200).render("pages/signin", {
-    users: users,
-    currentUser: currentUser,
-  });
+  if (currentUser._id) {
+    res.status(200).render("pages/homepage", {
+      users: users,
+      currentUser: currentUser,
+    });
+  } else {
+    res.status(200).render("pages/signin", {
+      users: users,
+      currentUser: currentUser,
+    });
+  }
 };
 
 const handleName = (req, res) => {
